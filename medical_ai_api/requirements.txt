@@ -1,9 +1,6 @@
-fastapi
-uvicorn
 tensorflow
-pillow
+gradio
 numpy
-python-multipart
-
-# install them using:
-# pip install -r requirements.txt
+Pillow
+opencv-python
+scikit-learn

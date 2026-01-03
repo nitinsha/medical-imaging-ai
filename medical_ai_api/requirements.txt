@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+tensorflow
+pillow
+numpy
+python-multipart
+
+# install them using:
+# pip install -r requirements.txt

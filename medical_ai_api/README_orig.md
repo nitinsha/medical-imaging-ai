@@ -1,3 +1,5 @@
+Yes
+
 # Medical Imaging AI Backend
 
 ⚠️ Research use only — not a medical device.

@@ -55,3 +55,7 @@ def health_check():
         "status": "ok",
         "model_loaded": True
     }
+
+@app.get("/")
+def root():
+    return {"status": "API is running"}

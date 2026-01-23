@@ -3,11 +3,16 @@ import tensorflow as tf
 import numpy as np
 from PIL import Image
 import os
+from huggingface_hub import hf_hub_download
 
 # -----------------------------
 # CONFIG
 # -----------------------------
-MODEL_PATH = "medical_ai_api/model/final_cnn_xray_ui_ready.keras"
+# MODEL_PATH = "model/final_cnn_xray_ui_ready.keras"
+MODEL_PATH = hf_hub_download(
+    repo_id="nitinsha/test-xray-cnn-baseline",
+    filename="final_cnn_xray_ui_ready.keras"
+)
 IMG_SIZE = (224, 224)
 
 # -----------------------------

@@ -6,6 +6,3 @@ __pycache__/
 
 # macOS system files
 .DS_Store
-
-# project
-medical_ai_api/README_orig.md

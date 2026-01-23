@@ -4,3 +4,4 @@ numpy
 Pillow
 opencv-python
 scikit-learn
+huggingface-hub

@@ -1,19 +1,37 @@
 import tensorflow as tf
 from app.utils import preprocess_image
+from pathlib import Path
+import requests
 
-MODEL_PATH = "model/final_cnn_xray_ui_ready.keras"
+model = None 
+# MODEL_PATH = "model/final_cnn_xray_ui_ready.keras"
+BASE_DIR = Path(__file__).resolve().parent.parent
+LOCAL_MODEL_PATH = BASE_DIR / "model" / "final_cnn_xray_ui_ready.keras"
 
-model = None
+MODEL_URL = "https://pub-a9cb4eba4f5944d7aa1f92499de40c7e.r2.dev/final_cnn_xray_ui_ready.keras"
 
+def download_model():
+    LOCAL_MODEL_PATH.parent.mkdir(exist_ok=True)
+
+    if not LOCAL_MODEL_PATH.exists():
+        print("⬇️ Downloading model from R2...")
+
+        with requests.get(MODEL_URL, stream=True, timeout=60) as r:
+            r.raise_for_status()
+            with open(LOCAL_MODEL_PATH, "wb") as f:
+                for chunk in r.iter_content(chunk_size=8192):
+                    f.write(chunk)
+
+        print("✅ Model downloaded")
 
 def load_model():
-    """
-    Loads the model once at application startup.
-    """
     global model
-    model = tf.keras.models.load_model(MODEL_PATH)
-    print("✅ Model loaded successfully")
+    download_model()
+    model = tf.keras.models.load_model(LOCAL_MODEL_PATH)
+    print("✅ Model loaded into memory")
 
+def get_model():
+    return model
 
 def interpret_prediction(prob):
     """
@@ -53,6 +71,7 @@ def predict(image_bytes):
     Full inference pipeline:
     image bytes → tensor → model → interpreted output
     """
+    model = get_model()
     if model is None:
         raise RuntimeError("Model is not loaded")
 

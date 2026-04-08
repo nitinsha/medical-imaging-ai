@@ -4,6 +4,7 @@ tensorflow
 pillow
 numpy
 python-multipart
+requests
 
 # install them using:
 # pip install -r requirements_local.txt

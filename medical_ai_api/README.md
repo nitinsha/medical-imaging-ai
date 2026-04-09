@@ -10,7 +10,7 @@
 ## Run BE
 
 # Create virtual environment
-python3 -m venv venv
+cd m    
 create venv in root folder and not inside mdeical_ai_api. 
 
 # Activate it
@@ -21,6 +21,9 @@ pip install -r medical_ai_api/requirements_local.txt
 
 # Run BE server
 cd medical_ai_api
+
+python run.py (recommended)
+or
 uvicorn app.main:app --reload
 
 8️⃣ How to Test the API
@@ -36,5 +39,5 @@ See JSON response
 ## Run FE
 
 Ensure FastAPI is running
-Run Gradio UI (new terminal):
-python gradio_app.py
+Run Streamlit UI (new terminal):
+streamlit run streamlit_app.py

@@ -5,6 +5,7 @@ pillow
 numpy
 python-multipart
 requests
+streamlit
 
 # install them using:
 # pip install -r requirements_local.txt
